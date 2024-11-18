@@ -1,12 +1,12 @@
 /**
  * @fileoverview Example to remove country flags from node names in the Quantumult X resource.
  *
- * @supported Quantumult X (v1.0.8-build253)
+ * @supported Quantumult X (v1.0.8-build253)33
  */
 
 // 获取资源的链接和内容
-let link0 = $resource.link;
-let content0 = $resource.content;
+let link0 = $resource.link;  // 获取订阅链接
+let content0 = $resource.content;  // 获取订阅内容
 
 // 输出调试信息，检查获取的链接和内容
 console.log("资源链接: ", link0);
@@ -23,12 +23,12 @@ function removeFlags(content) {
             // 匹配并删除节点名中的地区旗帜，例如 "🇭🇰 香港节点" -> "香港节点"
             if (/tag=/.test(line)) {
                 let tagIndex = line.indexOf("tag=");
-                let tagContent = line.slice(tagIndex + 4); // 获取节点名部分
+                let tagContent = line.slice(tagIndex + 4);  // 获取节点名部分
                 // 匹配并移除所有的地区旗帜符号
                 let modifiedTag = tagContent.replace(/(?:🇦🇫|🇦🇱|🇦🇷|🇦🇺|🇧🇪|🇨🇦|🇨🇳|🇩🇪|🇭🇰|🇯🇵|🇺🇸|🇬🇧)/g, "").trim();
-                return line.slice(0, tagIndex + 4) + modifiedTag; // 拼接修改后的节点名
+                return line.slice(0, tagIndex + 4) + modifiedTag;  // 拼接修改后的节点名
             }
-            return line; // 保留不含 tag 的行
+            return line;  // 保留不含 tag 的行
         })
         .join("\n");
 }
@@ -39,4 +39,4 @@ if (param) {
 }
 
 // 返回修改后的内容
-$done({content: content0});
+$done({ content: content0 });
