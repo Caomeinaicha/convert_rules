@@ -1,15 +1,3 @@
-#Quantumult X 资源解析器(2020-04-26: 18:33)
-本资源解析器作者: Shawn(@XIAO_KOP), 有问题请反馈:@Shawn_KOP_bot
-功能: 将节点订阅解析成Quantumult X引用片段, 并提供下列可选参数(已支持 V2RayN/SSR/SS/Trojan/Quanx订阅)
-0️⃣ 在订阅链接后加入 "#" 符号后再加参数，不同参数间请使用 "&" 来连接，如:
-       "#in=香港+台湾&emoji=1&tfo=1"
-1⃣️ 筛选参数 in、out, 分别为保留与排除，多个参数间用"+"号连接, 可直接使用中文(如"in=香港+台湾&out=BGP")
-2⃣️ emoji 参数为 emoji=1,2 或-1，为添加或删除节点名中的emoji旗帜（国行设备请用 emoji=2）
-3⃣️ udp=1, tfo=1 参数开启udp-relay及fast-open.(默认关闭,且此参数对源类型为Quanx的链接无效)
-4⃣️ rename 重命名,rename=旧名@新名, 以及 "前缀@", "@后缀",用"+"连接，如 "rename=香港@HK+[SS]@+@[1X]
-5⃣️ info=1，用于打开转换解析器的提示通知(默认关闭)
- */
-
 /**
  * 使用说明，
 0⃣️ 在Quantumult X 配置文件中[general] 部分，加入 resource_parser_url=https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
