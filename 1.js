@@ -1,15 +1,20 @@
-
 /**
- * Quantumult X 资源解析器 - 删除节点名内地区旗帜
+ * Quantumult X 资源解析器 - 删除节点名内地区旗帜3
  * 使用说明：
  * 在订阅链接后添加 #=0 即可实现删除节点名内地区旗帜的功能。
  */
 
 // 解析输入的资源链接
-let [link0, content0] = [$resource.link, $resource.content];
+let link0 = $resource.link; // 获取链接
+let content0 = $resource.content; // 获取内容
+
+// 输出调试信息，检查获取的链接和内容
+console.log("资源链接: ", link0);
+console.log("资源内容: ", content0);
 
 // 检查参数是否为 #=0，用于标记需要删除地区旗帜
-let param = /#=0/.test(link0) ? true : false;
+let param = link0.includes('#=0'); // 简化判断方式
+console.log("删除地区旗帜标记: ", param);
 
 // 删除节点名中的地区旗帜的函数
 function removeFlags(content) {
@@ -20,7 +25,9 @@ function removeFlags(content) {
             if (/tag=/.test(line)) {
                 let tagIndex = line.indexOf("tag=");
                 let tagContent = line.slice(tagIndex + 4); // 获取节点名部分
-                let modifiedTag = tagContent.replace(/🇦🇫|🇦🇱|🇦🇷|🇦🇺|🇧🇪|🇨🇦|🇨🇳|🇩🇪|🇭🇰|🇯🇵|🇺🇸|🇬🇧/g, "").trim(); // 删除常见旗帜
+                // 匹配并移除所有的地区旗帜符号
+                let modifiedTag = tagContent.replace(/(?:[\u2B50\u2194\u2705\u2600-\u26FF\u2300-\u23FF\u1F300-\u1F5FF\u1F600-\u1F64F]|🇦🇫|🇦🇱|🇦🇷|🇦🇺|🇧🇪|🇨🇦|🇨🇳|🇩🇪|🇭🇰|🇯🇵|🇺🇸|🇬🇧)/g, "").trim();
+                console.log("修改后的节点名: ", modifiedTag); // 输出修改后的节点名
                 return line.slice(0, tagIndex + 4) + modifiedTag; // 拼接修改后的节点名
             }
             return line; // 保留不含 tag 的行
